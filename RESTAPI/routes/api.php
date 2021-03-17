@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\http\controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/add-post',[PostController::class,'addPostAPI']);
+Route::get('/posts',[PostController::class,'getPosts']);
+Route::get('/post/{id}',[PostController::class,'getPostById']);
+Route::put('/update-post/{id}',[PostController::class,'updatePost']);
+Route::delete('/delete-post/{id}',[PostController::class,'deletePost']);
